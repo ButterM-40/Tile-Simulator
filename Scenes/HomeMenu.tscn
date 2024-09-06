@@ -1,0 +1,129 @@
+[gd_scene load_steps=7 format=3 uid="uid://c11awmrvh61wu"]
+
+[ext_resource type="StyleBox" uid="uid://dfcv4rqpa4cda" path="res://ButtonColors.tres" id="1_0ttbk"]
+[ext_resource type="Script" path="res://Code/HomeMenu.cs" id="1_sfqr4"]
+[ext_resource type="Script" path="res://Code/MenuActivator.cs" id="1_usnid"]
+[ext_resource type="Script" path="res://Code/MenuDeactivator.cs" id="3_larf7"]
+[ext_resource type="PackedScene" uid="uid://cm18sch7cqljl" path="res://Scenes/zoom_and_move_camera.tscn" id="4_js2mt"]
+[ext_resource type="PackedScene" uid="uid://bb425wglg7to7" path="res://Scenes/fileand_step.tscn" id="6_vnwen"]
+
+[node name="HomeMenu" type="CanvasLayer"]
+script = ExtResource("1_sfqr4")
+
+[node name="Background" type="ColorRect" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Menu" type="ColorRect" parent="."]
+unique_name_in_owner = true
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_top = -1.0
+offset_right = 293.0
+offset_bottom = -1.0
+grow_vertical = 2
+color = Color(0.451364, 0.767875, 0.766896, 0.776471)
+
+[node name="StartTileButton" type="Button" parent="Menu"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 86.0
+offset_top = 550.0
+offset_right = 198.0
+offset_bottom = 605.0
+text = "Start"
+
+[node name="BrowseTileButton" type="Button" parent="Menu"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 127.0
+offset_top = 111.0
+offset_right = 193.0
+offset_bottom = 142.0
+text = "Browse"
+
+[node name="FileDisplayNameLabel" type="Label" parent="Menu"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 17.0
+offset_top = 114.0
+offset_right = 104.0
+offset_bottom = 145.0
+theme_override_font_sizes/font_size = 15
+text = "Input FIle
+"
+
+[node name="Menu management" type="CanvasLayer" parent="."]
+
+[node name="MenuBar" type="ColorRect" parent="Menu management"]
+unique_name_in_owner = true
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 25.0
+grow_horizontal = 2
+color = Color(0.442911, 0.442911, 0.442911, 1)
+
+[node name="MenuActivator" type="Button" parent="Menu management"]
+unique_name_in_owner = true
+visible = false
+offset_top = 62.0
+offset_right = 8.0
+offset_bottom = 70.0
+scale = Vector2(5, 12.04)
+theme_override_styles/focus = ExtResource("1_0ttbk")
+theme_override_styles/disabled_mirrored = ExtResource("1_0ttbk")
+theme_override_styles/disabled = ExtResource("1_0ttbk")
+theme_override_styles/hover_pressed_mirrored = ExtResource("1_0ttbk")
+theme_override_styles/hover_pressed = ExtResource("1_0ttbk")
+theme_override_styles/hover_mirrored = ExtResource("1_0ttbk")
+theme_override_styles/hover = ExtResource("1_0ttbk")
+theme_override_styles/pressed_mirrored = ExtResource("1_0ttbk")
+theme_override_styles/pressed = ExtResource("1_0ttbk")
+theme_override_styles/normal_mirrored = ExtResource("1_0ttbk")
+theme_override_styles/normal = ExtResource("1_0ttbk")
+script = ExtResource("1_usnid")
+
+[node name="MenuDeactivator" type="Button" parent="Menu management"]
+unique_name_in_owner = true
+offset_left = 253.0
+offset_top = 62.0
+offset_right = 261.0
+offset_bottom = 70.0
+scale = Vector2(5, 12.04)
+theme_override_styles/focus = ExtResource("1_0ttbk")
+theme_override_styles/disabled_mirrored = ExtResource("1_0ttbk")
+theme_override_styles/disabled = ExtResource("1_0ttbk")
+theme_override_styles/hover_pressed_mirrored = ExtResource("1_0ttbk")
+theme_override_styles/hover_pressed = ExtResource("1_0ttbk")
+theme_override_styles/hover_mirrored = ExtResource("1_0ttbk")
+theme_override_styles/hover = ExtResource("1_0ttbk")
+theme_override_styles/pressed_mirrored = ExtResource("1_0ttbk")
+theme_override_styles/pressed = ExtResource("1_0ttbk")
+theme_override_styles/normal_mirrored = ExtResource("1_0ttbk")
+theme_override_styles/normal = ExtResource("1_0ttbk")
+script = ExtResource("3_larf7")
+
+[node name="ZoomAndMoveCamera" parent="." instance=ExtResource("4_js2mt")]
+
+[node name="FileExtraction" type="FileDialog" parent="."]
+unique_name_in_owner = true
+title = "Open a File"
+size = Vector2i(622, 485)
+ok_button_text = "Open"
+file_mode = 0
+access = 2
+show_hidden_files = true
+use_native_dialog = true
+
+[node name="FileandStep" parent="." instance=ExtResource("6_vnwen")]
+unique_name_in_owner = true
+
+[connection signal="pressed" from="Menu/BrowseTileButton" to="." method="_on_browse_pressed"]
+[connection signal="pressed" from="Menu management/MenuActivator" to="Menu management/MenuActivator" method="_on_pressed"]
+[connection signal="pressed" from="Menu management/MenuDeactivator" to="Menu management/MenuActivator" method="_on_menu_deactivator_pressed"]
+[connection signal="pressed" from="Menu management/MenuDeactivator" to="Menu management/MenuDeactivator" method="_on_pressed"]
+[connection signal="file_selected" from="FileExtraction" to="." method="_on_file_extraction_file_selected"]

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://4wrow1didtit"]
+
+[ext_resource type="PackedScene" uid="uid://cm18sch7cqljl" path="res://Scenes/zoom_and_move_camera.tscn" id="1_72kls"]
+[ext_resource type="PackedScene" uid="uid://c11awmrvh61wu" path="res://Scenes/HomeMenu.tscn" id="2_xd5q7"]
+
+[node name="MainTile" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ZoomAndMoveCamera" parent="." instance=ExtResource("1_72kls")]
+
+[node name="CanvasLayer" parent="." instance=ExtResource("2_xd5q7")]
+
+[connection signal="pressed" from="CanvasLayer/Menu/StartTileButton" to="CanvasLayer" method="_on_start_tile_button_pressed"]
+
+[editable path="CanvasLayer"]

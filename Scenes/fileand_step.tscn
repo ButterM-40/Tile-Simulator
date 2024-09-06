@@ -1,0 +1,87 @@
+[gd_scene load_steps=9 format=3 uid="uid://bb425wglg7to7"]
+
+[ext_resource type="Texture2D" uid="uid://bmg3xdf5x65d6" path="res://caret-right-icon.png" id="1_0ynt6"]
+[ext_resource type="Script" path="res://Code/FileandStep.cs" id="1_ge1yl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6o0vp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wulkl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_umngc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g84lt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bp03f"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4u3mv"]
+
+[node name="FileandStep" type="CanvasLayer"]
+script = ExtResource("1_ge1yl")
+
+[node name="RightButton" type="Button" parent="."]
+offset_left = 765.0
+offset_top = 51.0
+offset_right = 1111.0
+offset_bottom = 571.0
+scale = Vector2(0.18, 0.18)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6o0vp")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_wulkl")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_umngc")
+icon = ExtResource("1_0ynt6")
+flat = true
+
+[node name="LeftButton" type="Button" parent="."]
+offset_left = 410.0
+offset_top = 145.0
+offset_right = 756.0
+offset_bottom = 665.0
+rotation = 3.14159
+scale = Vector2(0.18, 0.178312)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_g84lt")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_bp03f")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_4u3mv")
+icon = ExtResource("1_0ynt6")
+flat = true
+
+[node name="LineEdit" type="LineEdit" parent="."]
+offset_left = 563.0
+offset_top = 63.0
+offset_right = 739.0
+offset_bottom = 135.0
+theme_override_colors/font_placeholder_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 45
+text = "0"
+placeholder_text = "#"
+
+[node name="TextEdit" type="TextEdit" parent="."]
+visible = false
+offset_left = 620.0
+offset_top = 59.0
+offset_right = 742.0
+offset_bottom = 134.0
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/font_placeholder_color = Color(1, 1, 1, 1)
+theme_override_colors/font_readonly_color = Color(0, 0, 0, 0)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/selection_color = Color(1, 1, 1, 1)
+theme_override_colors/font_selected_color = Color(1, 1, 1, 1)
+theme_override_colors/search_result_border_color = Color(1, 1, 1, 0)
+theme_override_colors/search_result_color = Color(1, 1, 1, 0)
+theme_override_font_sizes/font_size = 45
+text = "0"
+placeholder_text = "#"
+autowrap_mode = 1
+scroll_fit_content_height = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 424.0
+offset_top = 59.0
+offset_right = 563.0
+offset_bottom = 132.0
+theme_override_font_sizes/normal_font_size = 45
+text = "Stage:"
+
+[node name="MidPoint" type="Node2D" parent="."]
+position = Vector2(587, 314)

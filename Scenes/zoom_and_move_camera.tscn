@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cm18sch7cqljl"]
+
+[ext_resource type="Script" path="res://Code/ZoomAndMoveCamera.cs" id="1_ylo0k"]
+
+[node name="ZoomAndMoveCamera" type="Camera2D"]
+position = Vector2(577, 326)
+script = ExtResource("1_ylo0k")
