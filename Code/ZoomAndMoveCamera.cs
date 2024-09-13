@@ -19,14 +19,14 @@ public partial class ZoomAndMoveCamera : Camera2D
 					if (Zoom.X < 10f ){
 						Zoom += new Vector2(0.25f, 0.25f);
 						//dragSpeedMultiplier *= 0.3f;
-						GD.Print(Zoom);
+						//GD.Print(Zoom);
 					}
 				}
 				else if (mouseEvent.ButtonIndex == MouseButton.WheelDown || Input.IsActionPressed("Mouse_Down")){
 					if (Zoom.X-.25f != 0 ){
 						Zoom -= new Vector2(0.25f, 0.25f);
 						//dragSpeedMultiplier *= 0.3f;
-						GD.Print(Zoom);
+						//GD.Print(Zoom);
 					}
 				}
 				else if (mouseEvent.ButtonIndex == MouseButton.Left){

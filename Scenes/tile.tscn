@@ -1,7 +1,11 @@
-[gd_scene format=3 uid="uid://dsp8smuhqi2a0"]
+[gd_scene load_steps=2 format=3 uid="uid://dsp8smuhqi2a0"]
+
+[ext_resource type="Script" path="res://Code/TileManager.cs" id="1_yqm2n"]
 
 [node name="Tile" type="Node2D"]
+script = ExtResource("1_yqm2n")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="TileColor" type="ColorRect" parent="."]
+unique_name_in_owner = true
 offset_right = 15.0
 offset_bottom = 15.0

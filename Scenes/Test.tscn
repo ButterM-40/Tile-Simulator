@@ -7,8 +7,11 @@
 
 [node name="ZoomAndMoveCamera" parent="." instance=ExtResource("1_72kls")]
 
-[node name="CanvasLayer" parent="." instance=ExtResource("2_xd5q7")]
+[node name="MainFileManager" parent="." instance=ExtResource("2_xd5q7")]
+unique_name_in_owner = true
 
-[connection signal="pressed" from="CanvasLayer/Menu/StartTileButton" to="CanvasLayer" method="_on_start_tile_button_pressed"]
+[node name="DrawTile" type="Node2D" parent="."]
 
-[editable path="CanvasLayer"]
+[connection signal="pressed" from="MainFileManager/Menu/StartTileButton" to="MainFileManager" method="_on_start_tile_button_pressed"]
+
+[editable path="MainFileManager"]
