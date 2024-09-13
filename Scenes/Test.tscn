@@ -5,10 +5,6 @@
 
 [node name="MainTile" type="Node2D"]
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
-
 [node name="ZoomAndMoveCamera" parent="." instance=ExtResource("1_72kls")]
 
 [node name="CanvasLayer" parent="." instance=ExtResource("2_xd5q7")]

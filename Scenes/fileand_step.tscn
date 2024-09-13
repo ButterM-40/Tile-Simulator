@@ -81,7 +81,7 @@ offset_top = 59.0
 offset_right = 563.0
 offset_bottom = 132.0
 theme_override_font_sizes/normal_font_size = 45
-text = "Stage:"
+text = "Step:"
 
 [node name="MidPoint" type="Node2D" parent="."]
 position = Vector2(587, 314)

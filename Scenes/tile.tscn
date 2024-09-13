@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dsp8smuhqi2a0"]
+
+[node name="Tile" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 15.0
+offset_bottom = 15.0
