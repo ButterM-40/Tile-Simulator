@@ -1,55 +1,55 @@
 {
   "Steps": [
-    {
-      "StepNumber": 0,
-      "Tiles": [
-        {
-          "Tile_ID": 0,
-          "X": 0,
-          "Y": 0,
-          "Status": "P"
-        },
-        {
-          "Tile_ID": 1,
-          "X": 1,
-          "Y": 0,
-          "Status": "A"
-        }
-      ]
-    },
-    {
-      "StepNumber": 1,
-      "Tiles": [
-        {
-          "Tile_ID": 2,
-          "X": 0,
-          "Y": 3,
-          "Status": "P"
-        },
-        {
-          "Tile_ID": 3,
-          "X": 1,
-          "Y": 1,
-          "Status": "A"
-        }
-      ]
-    },
-    {
-      "StepNumber": 2,
-      "Tiles": [
-        {
-          "Tile_ID": 4,
-          "X": 0,
-          "Y": 2,
-          "Status": "P"
-        },
-        {
-          "Tile_ID": 5,
-          "X": 1,
-          "Y": 2,
-          "Status": "A"
-        }
-      ]
-    }
+	{
+	  "StepNumber": 0,
+	  "Tiles": [
+		{
+		  "Tile_ID": 0,
+		  "X": 0,
+		  "Y": 0,
+		  "Status": "P"
+		},
+		{
+		  "Tile_ID": 1,
+		  "X": 1,
+		  "Y": 0,
+		  "Status": "A"
+		}
+	  ]
+	},
+	{
+	  "StepNumber": 1,
+	  "Tiles": [
+		{
+		  "Tile_ID": 2,
+		  "X": 0,
+		  "Y": 3,
+		  "Status": "P"
+		},
+		{
+		  "Tile_ID": 3,
+		  "X": 1,
+		  "Y": 1,
+		  "Status": "A"
+		}
+	  ]
+	},
+	{
+	  "StepNumber": 2,
+	  "Tiles": [
+		{
+		  "Tile_ID": 4,
+		  "X": 0,
+		  "Y": 2,
+		  "Status": "P"
+		},
+		{
+		  "Tile_ID": 5,
+		  "X": 1,
+		  "Y": 2,
+		  "Status": "A"
+		}
+	  ]
+	}
   ]
 }

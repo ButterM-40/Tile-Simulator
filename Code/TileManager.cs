@@ -1,5 +1,11 @@
 using Godot;
 using System;
+using System.Collections.Generic;
+
+public class Step_Change{
+	public int Step_ID { get; set; }
+	public char Status { get; set; }
+}
 
 public partial class TileManager : Node2D
 {
@@ -9,8 +15,7 @@ public partial class TileManager : Node2D
 	Color F;
 	
 	int SpawnStep;
-	
-	
+	List<Step_Change> ChangeModification;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -34,7 +39,7 @@ public partial class TileManager : Node2D
 		}else{
 			GD.PrintErr("END ME");
 		}
-		
+		SpawnStep = 0;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -42,14 +47,36 @@ public partial class TileManager : Node2D
 	{
 		TileColor.Color = W;
 	}
-	public void _Tile_Initialize(){
-		
+	public void _Tile_Initialize(int first_seen){
+		SpawnStep = first_seen;
 	}
-	public void _Tile_Modification_Change(){
-		
+	public void _Tile_Modification_Change(int stage_id, char status){
+		ChangeModification.Add(new Step_Change() {Step_ID = stage_id, Status = status });
+	}
+	public List<Step_Change> returnTileList(){
+		return ChangeModification;
+	}
+	public void tile_change(int current_step){
+		if (current_step < SpawnStep){
+			this.Visible = true;
+			Step_Change modification = ChangeModification.Find(x => x.Step_ID == current_step);
+			if(modification.Status == 'W'){
+				TileColor.Color = W;
+			}
+			else if (modification.Status == 'P'){
+				TileColor.Color = P;
+			}
+			else{
+				TileColor.Color = F;
+			}
+		}
+		else if (current_step > SpawnStep){
+			this.Visible = false;
+		}
 	}
 	public void _on_fileand_step_stage_changed(int current_step)
 	{
-		GD.Print("Stage Changed Signal Received" + current_step);
+		GD.Print("Stage Changed Signal Received: " + current_step + this.Name);
+		tile_change(current_step);
 	}
 }

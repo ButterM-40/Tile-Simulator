@@ -42,6 +42,7 @@ public partial class FileandStep : CanvasLayer
 		currentStep = 0;
 		filename = "";
 		_Tile_Prefab = (PackedScene)GD.Load("res://Scenes/tile.tscn");
+		//Remember to add case errors
 		Root_Root = GetParent().GetParent();
 		StepNumber = GetNode<LineEdit>("%StepNumber");
 	}
