@@ -29,8 +29,9 @@ public partial class FileandStep : CanvasLayer
 	string filename = "";
 	Node2D Scene_Stage_Steps;
 	Node Root_Root;
-
+	Node2D TileGeneration;
 	int currentStep;
+	string TileName = "Tile_ID_Controller_";
 
 	[Signal]
 	public delegate void StageChangedEventHandler(int current_step);
@@ -44,6 +45,7 @@ public partial class FileandStep : CanvasLayer
 		_Tile_Prefab = (PackedScene)GD.Load("res://Scenes/tile.tscn");
 		//Remember to add case errors
 		Root_Root = GetParent().GetParent();
+		TileGeneration = Root_Root.GetNode<Node2D>("%TileGeneration");
 		StepNumber = GetNode<LineEdit>("%StepNumber");
 	}
 
@@ -74,11 +76,23 @@ public partial class FileandStep : CanvasLayer
 				Node tileInstance = _Tile_Prefab.Instantiate();
 				if (tileInstance is Node2D node2DInstance)
 				{
-					node2DInstance.Name = tile.Tile_ID;
-					node2DInstance.Position = new Vector2(tile.X * 15, tile.Y * 15);
-					Root_Root.AddChild(node2DInstance);
-				}
+					//Node2D TileExist = TileGeneration.GetNode<Node2D>(TileName+tile.Tile_ID);;
+					if (!TileGeneration.HasNode(TileName+tile.Tile_ID)) 
+					{
+						// Tile does not exist, so add it
+						node2DInstance.Name = TileName + tile.Tile_ID;
+						node2DInstance.Position = new Vector2(tile.X * 15, tile.Y * 15);
+						TileGeneration.AddChild(node2DInstance);
+					}
+					else
+					{
+						// Tile exists, modify its status
+						Node2D TileExist = TileGeneration.GetNode<Node2D>(TileName+tile.Tile_ID);
+						TileExist.CallDeferred("_Tile_Modification_Change", currentStep, tile.Status);
+				   	 }
+					}
 			}
+			currentStep += 1;
 		}
 	}
 

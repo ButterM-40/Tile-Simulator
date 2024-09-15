@@ -13,6 +13,7 @@ unique_name_in_owner = true
 [node name="DrawTile" type="Node2D" parent="."]
 
 [node name="TileGeneration" type="Node2D" parent="."]
+unique_name_in_owner = true
 
 [connection signal="pressed" from="MainFileManager/Menu/StartTileButton" to="MainFileManager" method="_on_start_tile_button_pressed"]
 

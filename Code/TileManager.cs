@@ -20,9 +20,9 @@ public partial class TileManager : Node2D
 	public override void _Ready()
 	{
 		TileColor = GetNode<ColorRect>("%TileColor");
-		P = new Color(.2f, .2f, 0f);
-		W = new Color(.2f, .2f, 0f);
-		F = new Color(.2f, .2f, 0f);
+		P = new Color(1.0f, 0.5f, 0.5f);
+		W = new Color(0.56f, 0.93f, 0.56f);
+		F = new Color(0.53f, 0.81f, 0.92f);
 		
 		Node Root_Root = GetParent();
 		var NewStuff = Root_Root.GetNode<CanvasLayer>("%MainFileManager");
@@ -40,12 +40,13 @@ public partial class TileManager : Node2D
 			GD.PrintErr("END ME");
 		}
 		SpawnStep = 0;
+		ChangeModification = new List<Step_Change>();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		TileColor.Color = W;
+		//TileColor.Color = W;
 	}
 	public void _Tile_Initialize(int first_seen){
 		SpawnStep = first_seen;
@@ -57,9 +58,17 @@ public partial class TileManager : Node2D
 		return ChangeModification;
 	}
 	public void tile_change(int current_step){
-		if (current_step < SpawnStep){
+		if (current_step > SpawnStep){
 			this.Visible = true;
+			
+			if (ChangeModification == null)
+{
+	GD.PrintErr("ChangeModification list is null.");
+	return;
+}
+			
 			Step_Change modification = ChangeModification.Find(x => x.Step_ID == current_step);
+
 			if(modification.Status == 'W'){
 				TileColor.Color = W;
 			}
@@ -70,7 +79,7 @@ public partial class TileManager : Node2D
 				TileColor.Color = F;
 			}
 		}
-		else if (current_step > SpawnStep){
+		else if (current_step < SpawnStep){
 			this.Visible = false;
 		}
 	}
