@@ -76,23 +76,33 @@ public partial class FileandStep : CanvasLayer
 				Node tileInstance = _Tile_Prefab.Instantiate();
 				if (tileInstance is Node2D node2DInstance)
 				{
+					
+					GD.PrintErr(TileGeneration.HasNode(TileName+tile.Tile_ID));
 					//Node2D TileExist = TileGeneration.GetNode<Node2D>(TileName+tile.Tile_ID);;
 					if (!TileGeneration.HasNode(TileName+tile.Tile_ID)) 
 					{
 						// Tile does not exist, so add it
 						node2DInstance.Name = TileName + tile.Tile_ID;
 						node2DInstance.Position = new Vector2(tile.X * 15, tile.Y * 15);
+						
+						node2DInstance.Set("SpawnStep", currentStep);
+						node2DInstance.Set("SpawnColor", tile.Status);
+						
 						TileGeneration.AddChild(node2DInstance);
+						GD.Print("Pass");
+						GD.Print(currentStep);
 					}
 					else
 					{
 						// Tile exists, modify its status
+						GD.Print("Do I ever Enter?");
 						Node2D TileExist = TileGeneration.GetNode<Node2D>(TileName+tile.Tile_ID);
-						TileExist.CallDeferred("_Tile_Modification_Change", currentStep, tile.Status);
+						TileExist.Call("_Tile_Modification_Change", tile.Tile_ID, tile.Status);
 				   	 }
 					}
 			}
 			currentStep += 1;
+			GD.Print(currentStep);
 		}
 	}
 
