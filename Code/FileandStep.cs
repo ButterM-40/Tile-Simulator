@@ -71,7 +71,7 @@ public partial class FileandStep : CanvasLayer
 	{
 		foreach (var step in deserialized.Steps)
 		{
-			foreach (var tile in step.Tiles)
+			/*foreach (var tile in step.Tiles)
 			{
 				Node tileInstance = _Tile_Prefab.Instantiate();
 				if (tileInstance is Node2D node2DInstance)
@@ -103,6 +103,7 @@ public partial class FileandStep : CanvasLayer
 			}
 			currentStep += 1;
 			GD.Print(currentStep);
+		}*/
 		}
 	}
 

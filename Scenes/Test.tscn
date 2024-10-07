@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://4wrow1didtit"]
+[gd_scene load_steps=4 format=3 uid="uid://4wrow1didtit"]
 
 [ext_resource type="PackedScene" uid="uid://cm18sch7cqljl" path="res://Scenes/zoom_and_move_camera.tscn" id="1_72kls"]
 [ext_resource type="PackedScene" uid="uid://c11awmrvh61wu" path="res://Scenes/HomeMenu.tscn" id="2_xd5q7"]
+[ext_resource type="PackedScene" uid="uid://bt5txrb02ugnq" path="res://TileGeneator.tscn" id="3_2umto"]
 
 [node name="MainTile" type="Node2D"]
 
@@ -14,6 +15,8 @@ unique_name_in_owner = true
 
 [node name="TileGeneration" type="Node2D" parent="."]
 unique_name_in_owner = true
+
+[node name="Node2D" parent="TileGeneration" instance=ExtResource("3_2umto")]
 
 [connection signal="pressed" from="MainFileManager/Menu/StartTileButton" to="MainFileManager" method="_on_start_tile_button_pressed"]
 
